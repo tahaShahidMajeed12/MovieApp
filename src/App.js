@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import Footer from "./Components/Footer";
-import SearchBox from "./Components/SearchBoxComponent";
-import NavBar from "./Components/AppBar";
-import CardList from "./Components/CardList";
+import React from "react";
+import Footer from "./components/Footer";
+import SearchBox from "./components/SearchBoxComponent";
+import NavBar from "./components/AppBar";
+import CardList from "./components/CardList";
 export default function App() {
   return (
     <>

@@ -2,15 +2,25 @@ import {
   GetMoviesListRequest,
   GetTrendingMoviesListRequest,
   GetUpcomingMoviesListRequest,
+  GetTvShows,
+  GetPeopleRequest,
 } from "../requests";
 import {
   SetMovieListAction,
   SetTrendingMoviesAction,
   SetUpcomingMoviesAction,
   Selection,
+  SetTvShowsAction,
+  SetPeopleAction,
 } from "../actions/movieAction";
 import { takeEvery, all, call, put } from "@redux-saga/core/effects";
-import { GETMOVIES, GETTRENDINGMOVIES, GETUPCOMINGMOVIES } from "../constants";
+import {
+  GETMOVIES,
+  GETTRENDINGMOVIES,
+  GETUPCOMINGMOVIES,
+  GETTVSHOW,
+  GETPEOPLE,
+} from "../constants";
 
 function* MovieListSaga() {
   const dataCall = yield call(() => GetMoviesListRequest());
@@ -33,11 +43,27 @@ function* UpcomingMovieListSaga() {
   yield put(Selection("upcoming"));
 }
 
+function* TvShowListSaga() {
+  const dataCall = yield call(() => GetTvShows());
+  const { data } = dataCall;
+  yield put(SetTvShowsAction(data.results));
+  yield put(Selection("Tv Shows"));
+}
+
+function* PeopleListSaga() {
+  const dataCall = yield call(() => GetPeopleRequest());
+  const { data } = dataCall;
+  yield put(SetPeopleAction(data.results));
+  yield put(Selection("people"));
+}
+
 function* RootSaga() {
   yield all([
     takeEvery(GETMOVIES, MovieListSaga),
     takeEvery(GETTRENDINGMOVIES, TrendingMovieListSaga),
     takeEvery(GETUPCOMINGMOVIES, UpcomingMovieListSaga),
+    takeEvery(GETTVSHOW, TvShowListSaga),
+    takeEvery(GETPEOPLE, PeopleListSaga),
   ]);
 }
 

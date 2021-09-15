@@ -37,7 +37,7 @@ const Footer = () => {
           </center>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -49,7 +49,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -61,7 +61,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -73,7 +73,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>

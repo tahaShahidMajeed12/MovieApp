@@ -6,6 +6,10 @@ import {
   GETUPCOMINGMOVIES,
   SETUPCOMINGMOVIES,
   SELECTION,
+  GETTVSHOW,
+  SETTVSHOW,
+  GETPEOPLE,
+  SETPEOPLE,
 } from "../constants";
 
 export const GetMovieListAction = () => {
@@ -47,6 +51,32 @@ export const SetUpcomingMoviesAction = (data) => {
 export const Selection = (data) => {
   return {
     type: SELECTION,
+    data: data,
+  };
+};
+
+export const GetTvShowsAction = () => {
+  return {
+    type: GETTVSHOW,
+  };
+};
+
+export const SetTvShowsAction = (data) => {
+  return {
+    type: SETTVSHOW,
+    data: data,
+  };
+};
+
+export const GetPeopleAction = () => {
+  return {
+    type: GETPEOPLE,
+  };
+};
+
+export const SetPeopleAction = (data) => {
+  return {
+    type: SETPEOPLE,
     data: data,
   };
 };

@@ -3,6 +3,8 @@ import {
   SETTRENDINGMOVIES,
   SETUPCOMINGMOVIES,
   SELECTION,
+  SETTVSHOW,
+  SETPEOPLE,
 } from "../constants";
 import Immutable, { List } from "immutable";
 const initialState = Immutable.fromJS({
@@ -25,6 +27,11 @@ const MovieReducer = (state = initialState, action) => {
       return state.set("upcomingMovies", List([...action.data]));
     case SELECTION:
       return state.set("selectedOption", action.data);
+    case SETPEOPLE:
+      return state.set("people", List([...action.data]));
+    case SETTVSHOW:
+      return state.set("tvShows", List([...action.data]));
+
     default:
       return state;
   }

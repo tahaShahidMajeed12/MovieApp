@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import headerLogo from "../images/headerLogo.png";
 import { Tab, Tabs } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {
   GetUpcomingMoviesAction,
   GetTrendingMoviesAction,
+  GetTvShowsAction,
+  GetPeopleAction,
 } from "../Store/actions/movieAction";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,18 +27,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
+  const [tabValue, setTabValue] = useState(1);
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div className={classes.root}>
@@ -59,19 +43,43 @@ export default function NavBar() {
             style={{ padding: 10 }}
           />
         </Toolbar>
-        <Tabs style={{ display: "inline" }}>
+        <Tabs style={{ display: "inline" }} value={tabValue}>
           <Tab
             label="UPCOMMING"
             style={{ color: "#fff", fontWeight: "bold" }}
-            onClick={() => dispatch(GetUpcomingMoviesAction())}
+            onClick={() => {
+              dispatch(GetUpcomingMoviesAction());
+              setTabValue(1);
+            }}
+            value={1}
           />
           <Tab
             label="TREDING"
             style={{ color: "#fff", fontWeight: "bold" }}
-            onClick={() => dispatch(GetTrendingMoviesAction())}
+            onClick={() => {
+              dispatch(GetTrendingMoviesAction());
+              setTabValue(2);
+            }}
+            value={2}
           />
-          <Tab label="TV SHOWS" style={{ color: "#fff", fontWeight: "bold" }} />
-          <Tab label="PEOPLE" style={{ color: "#fff", fontWeight: "bold" }} />
+          <Tab
+            label="TV SHOWS"
+            style={{ color: "#fff", fontWeight: "bold" }}
+            onClick={() => {
+              dispatch(GetTvShowsAction());
+              setTabValue(3);
+            }}
+            value={3}
+          />
+          <Tab
+            label="PEOPLE"
+            style={{ color: "#fff", fontWeight: "bold" }}
+            onClick={() => {
+              dispatch(GetPeopleAction());
+              setTabValue(4);
+            }}
+            value={4}
+          />
         </Tabs>
       </AppBar>
     </div>
