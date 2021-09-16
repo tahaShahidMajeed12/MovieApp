@@ -10,3 +10,6 @@ export const GETTVSHOW = "Get_Tv_Show";
 export const SETTVSHOW = "Set_Tv_Show";
 export const GETPEOPLE = "Get_People";
 export const SETPEOPLE = "Set_People";
+export const GETSEARCH = "Get_Search";
+export const SETSEARCH = "Set_Search";
+export const SETSEARCHSTOP = "Stop_Search";

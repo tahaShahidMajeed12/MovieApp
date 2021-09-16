@@ -29,3 +29,8 @@ export const GetPeopleRequest = () => {
     `https://api.themoviedb.org/3/person/popular?api_key=${APIKEY}&language=en-US&page=1`
   );
 };
+export const Search = (query) => {
+  return axios.request(
+    `https://api.themoviedb.org/3/search/multi?api_key=${APIKEY}&language=en-US&page=1&include_adult=false&query=${query}&adult=true`
+  );
+};

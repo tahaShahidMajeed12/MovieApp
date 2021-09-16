@@ -6,10 +6,10 @@ import headerLogo from "../images/headerLogo.png";
 import { Tab, Tabs } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {
-  GetUpcomingMoviesAction,
-  GetTrendingMoviesAction,
-  GetTvShowsAction,
-  GetPeopleAction,
+  getUpcomingMoviesAction,
+  getTrendingMoviesAction,
+  getTvShowsAction,
+  getPeopleAction,
 } from "../Store/actions/movieAction";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +48,7 @@ export default function NavBar() {
             label="UPCOMMING"
             style={{ color: "#fff", fontWeight: "bold" }}
             onClick={() => {
-              dispatch(GetUpcomingMoviesAction());
+              dispatch(getUpcomingMoviesAction());
               setTabValue(1);
             }}
             value={1}
@@ -57,7 +57,7 @@ export default function NavBar() {
             label="TREDING"
             style={{ color: "#fff", fontWeight: "bold" }}
             onClick={() => {
-              dispatch(GetTrendingMoviesAction());
+              dispatch(getTrendingMoviesAction());
               setTabValue(2);
             }}
             value={2}
@@ -66,7 +66,7 @@ export default function NavBar() {
             label="TV SHOWS"
             style={{ color: "#fff", fontWeight: "bold" }}
             onClick={() => {
-              dispatch(GetTvShowsAction());
+              dispatch(getTvShowsAction());
               setTabValue(3);
             }}
             value={3}
@@ -75,7 +75,7 @@ export default function NavBar() {
             label="PEOPLE"
             style={{ color: "#fff", fontWeight: "bold" }}
             onClick={() => {
-              dispatch(GetPeopleAction());
+              dispatch(getPeopleAction());
               setTabValue(4);
             }}
             value={4}

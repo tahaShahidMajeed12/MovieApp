@@ -1,7 +1,25 @@
+import React from "react";
 import { Grid, Container, TextField, Button } from "@material-ui/core";
 import cartoon from "../images/cartoon.jpg";
+import {
+  getSearch,
+  stopSearch,
+  getMovieListAction,
+} from "../Store/actions/movieAction";
+import { useDispatch } from "react-redux";
 
 const SearchBox = () => {
+  const dispatch = useDispatch();
+
+  const handleChange = (v) => {
+    if (v !== "") {
+      dispatch(getSearch(v));
+    } else {
+      dispatch(stopSearch());
+      dispatch(getMovieListAction());
+    }
+  };
+
   return (
     <Container
       maxWidth={"lg"}
@@ -23,6 +41,7 @@ const SearchBox = () => {
           <TextField
             label="Search Here...."
             variant="outlined"
+            onChange={(e) => handleChange(e.target.value)}
             style={{ backgroundColor: "#fff", width: "80%" }}
           />
           <Button
@@ -31,7 +50,6 @@ const SearchBox = () => {
               borderRadius: 3,
               border: 0,
               color: "white",
-
               padding: "0 30px",
               width: 100,
               height: 55,

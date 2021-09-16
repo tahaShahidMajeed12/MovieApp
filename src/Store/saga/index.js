@@ -4,66 +4,76 @@ import {
   GetUpcomingMoviesListRequest,
   GetTvShows,
   GetPeopleRequest,
+  Search,
 } from "../requests";
 import {
-  SetMovieListAction,
-  SetTrendingMoviesAction,
-  SetUpcomingMoviesAction,
-  Selection,
-  SetTvShowsAction,
-  SetPeopleAction,
+  setMovieListAction,
+  setTrendingMoviesAction,
+  setUpcomingMoviesAction,
+  selection,
+  setTvShowsAction,
+  setPeopleAction,
+  setSearch,
 } from "../actions/movieAction";
-import { takeEvery, all, call, put } from "@redux-saga/core/effects";
+import { takeEvery, all, call, put, debounce } from "@redux-saga/core/effects";
 import {
   GETMOVIES,
   GETTRENDINGMOVIES,
   GETUPCOMINGMOVIES,
   GETTVSHOW,
   GETPEOPLE,
+  GETSEARCH,
 } from "../constants";
 
-function* MovieListSaga() {
+function* movieListSaga() {
   const dataCall = yield call(() => GetMoviesListRequest());
   const { data } = dataCall;
-  yield put(SetMovieListAction(data.results));
-  yield put(Selection("movie"));
+  yield put(setMovieListAction(data.results));
+  yield put(selection("movie"));
 }
 
-function* TrendingMovieListSaga() {
+function* trendingMovieListSaga() {
   const dataCall = yield call(() => GetTrendingMoviesListRequest());
   const { data } = dataCall;
-  yield put(SetTrendingMoviesAction(data.results));
-  yield put(Selection("trending"));
+  yield put(setTrendingMoviesAction(data.results));
+  yield put(selection("trending"));
 }
 
-function* UpcomingMovieListSaga() {
+function* upcomingMovieListSaga() {
   const dataCall = yield call(() => GetUpcomingMoviesListRequest());
   const { data } = dataCall;
-  yield put(SetUpcomingMoviesAction(data.results));
-  yield put(Selection("upcoming"));
+  yield put(setUpcomingMoviesAction(data.results));
+  yield put(selection("upcoming"));
 }
 
-function* TvShowListSaga() {
+function* tvShowListSaga() {
   const dataCall = yield call(() => GetTvShows());
   const { data } = dataCall;
-  yield put(SetTvShowsAction(data.results));
-  yield put(Selection("Tv Shows"));
+  yield put(setTvShowsAction(data.results));
+  yield put(selection("Tv Shows"));
 }
 
-function* PeopleListSaga() {
+function* peopleListSaga() {
   const dataCall = yield call(() => GetPeopleRequest());
   const { data } = dataCall;
-  yield put(SetPeopleAction(data.results));
-  yield put(Selection("people"));
+  yield put(setPeopleAction(data.results));
+  yield put(selection("people"));
+}
+function* multiSearchSaga(props) {
+  const dataCall = yield call(() => Search(props.data));
+  const { data } = dataCall;
+  yield put(setSearch(data.results));
+  yield put(selection("Search Results"));
 }
 
 function* RootSaga() {
   yield all([
-    takeEvery(GETMOVIES, MovieListSaga),
-    takeEvery(GETTRENDINGMOVIES, TrendingMovieListSaga),
-    takeEvery(GETUPCOMINGMOVIES, UpcomingMovieListSaga),
-    takeEvery(GETTVSHOW, TvShowListSaga),
-    takeEvery(GETPEOPLE, PeopleListSaga),
+    takeEvery(GETMOVIES, movieListSaga),
+    takeEvery(GETTRENDINGMOVIES, trendingMovieListSaga),
+    takeEvery(GETUPCOMINGMOVIES, upcomingMovieListSaga),
+    takeEvery(GETTVSHOW, tvShowListSaga),
+    takeEvery(GETPEOPLE, peopleListSaga),
+    debounce(200, GETSEARCH, multiSearchSaga),
   ]);
 }
 

@@ -31,7 +31,7 @@ export default function CardItem(props) {
         component="img"
         alt="Contemplative Reptile"
         height={300}
-        image={"http://images.tmdb.org/t/p/w300/" + props.path}
+        image={"http://image.tmdb.org/t/p/w500" + props.path}
         title="Contemplative Reptile"
       />
       <CardContent>
