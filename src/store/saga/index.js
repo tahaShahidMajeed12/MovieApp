@@ -1,10 +1,10 @@
 import {
-  GetMoviesListRequest,
-  GetTrendingMoviesListRequest,
-  GetUpcomingMoviesListRequest,
-  GetTvShows,
-  GetPeopleRequest,
-  Search,
+  getMoviesListRequest,
+  getTrendingMoviesListRequest,
+  getUpcomingMoviesListRequest,
+  getTvShows,
+  getPeopleRequest,
+  search,
 } from "../requests";
 import {
   setMovieListAction,
@@ -17,63 +17,63 @@ import {
 } from "../actions/movieAction";
 import { takeEvery, all, call, put, debounce } from "@redux-saga/core/effects";
 import {
-  GETMOVIES,
-  GETTRENDINGMOVIES,
-  GETUPCOMINGMOVIES,
-  GETTVSHOW,
-  GETPEOPLE,
-  GETSEARCH,
+  GET_MOVIES,
+  GET_TRENDING_MOVIES,
+  GET_UPCOMING_MOVIES,
+  GET_TV_SHOW,
+  GET_PEOPLE,
+  GET_SEARCH,
 } from "../constants";
 
 function* movieListSaga() {
-  const dataCall = yield call(() => GetMoviesListRequest());
-  const { data } = dataCall;
+  const apiCall = yield call(() => getMoviesListRequest());
+  const { data } = apiCall;
   yield put(setMovieListAction(data.results));
   yield put(selection("movie"));
 }
 
 function* trendingMovieListSaga() {
-  const dataCall = yield call(() => GetTrendingMoviesListRequest());
-  const { data } = dataCall;
+  const apiCall = yield call(() => getTrendingMoviesListRequest());
+  const { data } = apiCall;
   yield put(setTrendingMoviesAction(data.results));
   yield put(selection("trending"));
 }
 
 function* upcomingMovieListSaga() {
-  const dataCall = yield call(() => GetUpcomingMoviesListRequest());
-  const { data } = dataCall;
+  const apiCall = yield call(() => getUpcomingMoviesListRequest());
+  const { data } = apiCall;
   yield put(setUpcomingMoviesAction(data.results));
   yield put(selection("upcoming"));
 }
 
 function* tvShowListSaga() {
-  const dataCall = yield call(() => GetTvShows());
-  const { data } = dataCall;
+  const apiCall = yield call(() => getTvShows());
+  const { data } = apiCall;
   yield put(setTvShowsAction(data.results));
   yield put(selection("Tv Shows"));
 }
 
 function* peopleListSaga() {
-  const dataCall = yield call(() => GetPeopleRequest());
-  const { data } = dataCall;
+  const apiCall = yield call(() => getPeopleRequest());
+  const { data } = apiCall;
   yield put(setPeopleAction(data.results));
   yield put(selection("people"));
 }
 function* multiSearchSaga(props) {
-  const dataCall = yield call(() => Search(props.data));
-  const { data } = dataCall;
+  const apiCall = yield call(() => search(props.data));
+  const { data } = apiCall;
   yield put(setSearch(data.results));
   yield put(selection("Search Results"));
 }
 
 function* RootSaga() {
   yield all([
-    takeEvery(GETMOVIES, movieListSaga),
-    takeEvery(GETTRENDINGMOVIES, trendingMovieListSaga),
-    takeEvery(GETUPCOMINGMOVIES, upcomingMovieListSaga),
-    takeEvery(GETTVSHOW, tvShowListSaga),
-    takeEvery(GETPEOPLE, peopleListSaga),
-    debounce(200, GETSEARCH, multiSearchSaga),
+    takeEvery(GET_MOVIES, movieListSaga),
+    takeEvery(GET_TRENDING_MOVIES, trendingMovieListSaga),
+    takeEvery(GET_UPCOMING_MOVIES, upcomingMovieListSaga),
+    takeEvery(GET_TV_SHOW, tvShowListSaga),
+    takeEvery(GET_PEOPLE, peopleListSaga),
+    debounce(200, GET_SEARCH, multiSearchSaga),
   ]);
 }
 

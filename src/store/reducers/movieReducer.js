@@ -1,12 +1,12 @@
 import {
-  SETMOVIES,
-  SETTRENDINGMOVIES,
-  SETUPCOMINGMOVIES,
+  SET_MOVIES,
+  SET_TRENDING_MOVIES,
+  SET_UPCOMING_MOVIES,
   SELECTION,
-  SETTVSHOW,
-  SETPEOPLE,
-  SETSEARCH,
-  SETSEARCHSTOP,
+  SET_TV_SHOW,
+  SET_PEOPLE,
+  SET_SEARCH,
+  SET_SEARCH_STOP,
 } from "../constants";
 import { fromJS, List } from "immutable";
 const initialState = fromJS({
@@ -21,21 +21,21 @@ const initialState = fromJS({
   search: List([]),
 });
 
-const MovieReducer = (state = initialState, action) => {
+const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SETMOVIES:
+    case SET_MOVIES:
       return state.set("moviesList", List(action.data));
-    case SETTRENDINGMOVIES:
+    case SET_TRENDING_MOVIES:
       return state.set("trendingMovies", List(action.data));
-    case SETUPCOMINGMOVIES:
+    case SET_UPCOMING_MOVIES:
       return state.set("upcomingMovies", List(action.data));
     case SELECTION:
       return state.set("selectedOption", action.data);
-    case SETPEOPLE:
+    case SET_PEOPLE:
       return state.set("people", List(action.data));
-    case SETTVSHOW:
+    case SET_TV_SHOW:
       return state.set("tvShows", List(action.data));
-    case SETSEARCH:
+    case SET_SEARCH:
       if (state.get("isSearch") === false) {
         state = state.set("isSearch", true);
       }
@@ -44,11 +44,11 @@ const MovieReducer = (state = initialState, action) => {
         return state.set("search", List([...action.data]));
       }
       return state;
-    case SETSEARCHSTOP:
+    case SET_SEARCH_STOP:
       return state.set("isSearch", false);
     default:
       return state;
   }
 };
 
-export default MovieReducer;
+export default movieReducer;

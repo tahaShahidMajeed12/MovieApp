@@ -1,53 +1,53 @@
 import {
-  GETMOVIES,
-  GETTRENDINGMOVIES,
-  SETMOVIES,
-  SETTRENDINGMOVIES,
-  GETUPCOMINGMOVIES,
-  SETUPCOMINGMOVIES,
+  GET_MOVIES,
+  GET_TRENDING_MOVIES,
+  SET_MOVIES,
+  SET_TRENDING_MOVIES,
+  GET_UPCOMING_MOVIES,
+  SET_UPCOMING_MOVIES,
   SELECTION,
-  GETTVSHOW,
-  SETTVSHOW,
-  GETPEOPLE,
-  SETPEOPLE,
-  GETSEARCH,
-  SETSEARCH,
-  SETSEARCHSTOP,
+  GET_TV_SHOW,
+  SET_TV_SHOW,
+  GET_PEOPLE,
+  SET_PEOPLE,
+  GET_SEARCH,
+  SET_SEARCH,
+  SET_SEARCH_STOP,
 } from "../constants";
 
 export const getMovieListAction = () => {
   return {
-    type: GETMOVIES,
+    type: GET_MOVIES,
   };
 };
 
 export const setMovieListAction = (data) => {
   return {
-    type: SETMOVIES,
+    type: SET_MOVIES,
     data: data,
   };
 };
 
 export const getTrendingMoviesAction = () => {
   return {
-    type: GETTRENDINGMOVIES,
+    type: GET_TRENDING_MOVIES,
   };
 };
 
 export const setTrendingMoviesAction = (data) => {
   return {
-    type: SETTRENDINGMOVIES,
+    type: SET_TRENDING_MOVIES,
     data: data,
   };
 };
 export const getUpcomingMoviesAction = () => {
   return {
-    type: GETUPCOMINGMOVIES,
+    type: GET_UPCOMING_MOVIES,
   };
 };
 export const setUpcomingMoviesAction = (data) => {
   return {
-    type: SETUPCOMINGMOVIES,
+    type: SET_UPCOMING_MOVIES,
     data: data,
   };
 };
@@ -60,46 +60,46 @@ export const selection = (data) => {
 
 export const getTvShowsAction = () => {
   return {
-    type: GETTVSHOW,
+    type: GET_TV_SHOW,
   };
 };
 
 export const setTvShowsAction = (data) => {
   return {
-    type: SETTVSHOW,
+    type: SET_TV_SHOW,
     data: data,
   };
 };
 
 export const getPeopleAction = () => {
   return {
-    type: GETPEOPLE,
+    type: GET_PEOPLE,
   };
 };
 
 export const setPeopleAction = (data) => {
   return {
-    type: SETPEOPLE,
+    type: SET_PEOPLE,
     data: data,
   };
 };
 
 export const getSearch = (data) => {
   return {
-    type: GETSEARCH,
+    type: GET_SEARCH,
     data: data,
   };
 };
 
 export const setSearch = (data) => {
   return {
-    type: SETSEARCH,
+    type: SET_SEARCH,
     data: data,
   };
 };
 
 export const stopSearch = () => {
   return {
-    type: SETSEARCHSTOP,
+    type: SET_SEARCH_STOP,
   };
 };
