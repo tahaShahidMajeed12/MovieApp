@@ -1,39 +1,25 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import headerLogo from "../images/headerLogo.png";
 import { Tab, Tabs } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {
-  GetUpcomingMoviesAction,
-  GetTrendingMoviesAction,
-  GetTvShowsAction,
-  GetPeopleAction,
-} from "../Store/actions/movieAction";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    marginBottom: 20,
-    backgroundColor: "#031d33",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+  getUpcomingMoviesAction,
+  getTrendingMoviesAction,
+  getTvShowsAction,
+  getPeopleAction,
+} from "../store/actions/movieAction";
+import { App_Bar } from "../styles/styleSheet";
 
 export default function NavBar() {
   const [tabValue, setTabValue] = useState(1);
   const dispatch = useDispatch();
-  const classes = useStyles();
+  const classes = App_Bar;
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "#031d33" }}>
+      <AppBar position="static">
         <Toolbar>
           <img
             src={headerLogo}
@@ -46,36 +32,36 @@ export default function NavBar() {
         <Tabs style={{ display: "inline" }} value={tabValue}>
           <Tab
             label="UPCOMMING"
-            style={{ color: "#fff", fontWeight: "bold" }}
+            style={classes.tabDesign}
             onClick={() => {
-              dispatch(GetUpcomingMoviesAction());
+              dispatch(getUpcomingMoviesAction());
               setTabValue(1);
             }}
             value={1}
           />
           <Tab
             label="TREDING"
-            style={{ color: "#fff", fontWeight: "bold" }}
+            style={classes.tabDesign}
             onClick={() => {
-              dispatch(GetTrendingMoviesAction());
+              dispatch(getTrendingMoviesAction());
               setTabValue(2);
             }}
             value={2}
           />
           <Tab
             label="TV SHOWS"
-            style={{ color: "#fff", fontWeight: "bold" }}
+            style={classes.tabDesign}
             onClick={() => {
-              dispatch(GetTvShowsAction());
+              dispatch(getTvShowsAction());
               setTabValue(3);
             }}
             value={3}
           />
           <Tab
             label="PEOPLE"
-            style={{ color: "#fff", fontWeight: "bold" }}
+            style={classes.tabDesign}
             onClick={() => {
-              dispatch(GetPeopleAction());
+              dispatch(getPeopleAction());
               setTabValue(4);
             }}
             value={4}
