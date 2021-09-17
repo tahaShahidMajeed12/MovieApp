@@ -29,7 +29,7 @@ export default function NavBar() {
             style={{ padding: 10 }}
           />
         </Toolbar>
-        <Tabs style={{ display: "inline" }} value={tabValue}>
+        <Tabs className={classes.tab} value={tabValue}>
           <Tab
             label="UPCOMMING"
             style={classes.tabDesign}

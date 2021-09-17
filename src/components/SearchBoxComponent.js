@@ -7,9 +7,11 @@ import {
 } from "../store/actions/movieAction";
 import { useDispatch } from "react-redux";
 import { Search_Box } from "../styles/styleSheet";
+
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const styles = Search_Box;
+
+  const styles = Search_Box();
   const handleChange = (v) => {
     if (v !== "") {
       dispatch(getSearch(v));
@@ -20,16 +22,16 @@ const SearchBox = () => {
   };
 
   return (
-    <Container maxWidth={"lg"} style={styles.parent}>
+    <Container maxWidth={"lg"} className={styles.parent}>
       <Grid container width="100%">
         <Grid sm={12} xs={12} md={12} item>
           <TextField
             label="Search Here...."
             variant="outlined"
             onChange={(e) => handleChange(e.target.value)}
-            style={styles.txtField}
+            className={styles.txtField}
           />
-          <Button style={styles.btn}>Search</Button>
+          <Button className={styles.btn}>Search</Button>
         </Grid>
       </Grid>
     </Container>

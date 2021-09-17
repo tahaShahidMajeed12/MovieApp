@@ -22,6 +22,11 @@ const useStyles = makeStyles({
   footerListText: {
     fontSize: 40,
   },
+  btn: {
+    color: "darkblue",
+    borderColor: "#fff",
+    backgroundColor: "#fff",
+  },
 });
 
 export const App_Bar = makeStyles((theme) => ({
@@ -39,6 +44,9 @@ export const App_Bar = makeStyles((theme) => ({
   tabDesign: {
     color: "#fff",
     fontWeight: "bold",
+  },
+  tab: {
+    display: "inline",
   },
 }));
 
@@ -64,7 +72,7 @@ export const Card_Item = makeStyles({
   },
 });
 
-export const Search_Box = {
+export const Search_Box = makeStyles({
   parent: {
     backgroundImage: `url(${cartoon} )`,
     backgroundPosition: "center",
@@ -87,6 +95,10 @@ export const Search_Box = {
     height: 55,
   },
   txtField: { backgroundColor: "#fff", width: "80%" },
-};
+});
 
+export const Card_List = makeStyles({
+  heading: { textAlign: "center", color: "black", marginTop: 30 },
+  body: { marginTop: 60, marginBottom: 60 },
+});
 export default useStyles;

@@ -13,7 +13,6 @@ const Footer = () => {
         alignItems="center"
         spacing={2}
         width="100%"
-        style={{ margin: 20 }}
       >
         <Grid item lg={2} xs={12} sm={12} xl={2}>
           <center>
@@ -25,15 +24,7 @@ const Footer = () => {
               height={140}
             />
             <br />
-            <Button
-              style={{
-                color: "darkblue",
-                borderColor: "#fff",
-                backgroundColor: "#fff",
-              }}
-            >
-              Join Community
-            </Button>
+            <Button className={classes.btn}>Join Community</Button>
           </center>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>

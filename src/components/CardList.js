@@ -3,27 +3,21 @@ import { Grid, Typography } from "@material-ui/core";
 import CardItem from "./CardItem";
 import { useSelector, useDispatch } from "react-redux";
 import { getMovieListAction } from "../store/actions/movieAction";
-
+import { Card_List } from "../styles/styleSheet";
 const CardList = () => {
   const state = useSelector((state) => state.Movie.toJS());
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovieListAction());
   }, [dispatch]);
+  const classes = Card_List();
 
   return (
     <>
-      <Typography
-        variant="h2"
-        style={{ textAlign: "center", color: "black", marginTop: 30 }}
-      >
+      <Typography variant="h2" className={classes.heading}>
         {state.selectedOption.toUpperCase()}
       </Typography>
-      <Grid
-        container
-        style={{ marginTop: 60, marginBottom: 60 }}
-        justifyContent="center"
-      >
+      <Grid container className={classes.body} justifyContent="center">
         {state.selectedOption === "movie" &&
         state.isSearch === false &&
         state.moviesList
