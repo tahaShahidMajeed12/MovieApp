@@ -3,8 +3,8 @@ import Card from "@material-ui/core/Card";
 import { CardMedia } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { IMAGE_PATH } from "../store/constants";
-import { Card_Item } from "../styles/styleSheet";
+import { IMAGE_PATH } from "../../store/constants";
+import { Card_Item } from "../../styles/styleSheet";
 
 export default function CardItem(props) {
   const classes = Card_Item;

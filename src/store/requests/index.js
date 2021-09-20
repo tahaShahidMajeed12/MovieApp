@@ -34,3 +34,18 @@ export const search = (query) => {
     `${API_URL}search/multi?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}&adult=true`
   );
 };
+export const movieDetailRequest = (id) => {
+  return axios.request(
+    `${API_URL}movie/${id}?api_key=${API_KEY}&language=en-US`
+  );
+};
+
+export const tvShowDetailRequest = (id) => {
+  return axios.request(`${API_URL}tv/${id}?api_key=${API_KEY}&language=en-US`);
+};
+
+export const peopleDetailRequest = (id) => {
+  return axios.request(
+    `${API_URL}person/${id}?api_key=${API_KEY}&language=en-US`
+  );
+};

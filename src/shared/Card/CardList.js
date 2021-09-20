@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import CardItem from "./CardItem";
 import { useSelector, useDispatch } from "react-redux";
-import { getMovieListAction } from "../store/actions/movieAction";
-import { Card_List } from "../styles/styleSheet";
+import { getMovieListAction } from "../../store/actions/movieAction";
+import { Card_List } from "../../styles/styleSheet";
 const CardList = () => {
   const state = useSelector((state) => state.Movie.toJS());
   const dispatch = useDispatch();
