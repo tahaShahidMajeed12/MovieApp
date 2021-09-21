@@ -4,12 +4,17 @@ import Toolbar from "@material-ui/core/Toolbar";
 import headerLogo from "../../images/headerLogo.png";
 import { Tab, Tabs } from "@material-ui/core";
 
-import { App_Bar } from "../../styles/styleSheet";
+import { headerStyle } from "../../styles/styleSheet";
 
-export default function NavBar(props) {
+export default function NavBar({
+  dispatchUpcomingMovie,
+  dispatchTrendingMovie,
+  dispatchTvShow,
+  dispatchPeople,
+}) {
   const [tabValue, setTabValue] = useState(1);
 
-  const classes = App_Bar;
+  const classes = headerStyle;
 
   return (
     <div className={classes.root}>
@@ -28,7 +33,7 @@ export default function NavBar(props) {
             label="UPCOMMING"
             style={classes.tabDesign}
             onClick={() => {
-              props.dispatchUpcomingMovie();
+              dispatchUpcomingMovie();
               setTabValue(1);
             }}
             value={1}
@@ -37,7 +42,7 @@ export default function NavBar(props) {
             label="TREDING"
             style={classes.tabDesign}
             onClick={() => {
-              props.dispatchTrendingMovie();
+              dispatchTrendingMovie();
               setTabValue(2);
             }}
             value={2}
@@ -46,7 +51,7 @@ export default function NavBar(props) {
             label="TV SHOWS"
             style={classes.tabDesign}
             onClick={() => {
-              props.dispatchTvShow();
+              dispatchTvShow();
               setTabValue(3);
             }}
             value={3}
@@ -55,7 +60,7 @@ export default function NavBar(props) {
             label="PEOPLE"
             style={classes.tabDesign}
             onClick={() => {
-              props.dispatchPeople();
+              dispatchPeople();
               setTabValue(4);
             }}
             value={4}

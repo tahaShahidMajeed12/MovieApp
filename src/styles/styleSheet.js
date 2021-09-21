@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const App_Bar = makeStyles((theme) => ({
+export const headerStyle = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginBottom: 20,
@@ -50,7 +50,7 @@ export const App_Bar = makeStyles((theme) => ({
   },
 }));
 
-export const Card_Item = makeStyles({
+export const cardItemStyle = makeStyles({
   root: {
     minWidth: 150,
     margin: 10,
@@ -72,7 +72,7 @@ export const Card_Item = makeStyles({
   },
 });
 
-export const Search_Box = makeStyles({
+export const searchBoxStyle = makeStyles({
   parent: {
     backgroundImage: `url(${cartoon} )`,
     backgroundPosition: "center",
@@ -97,7 +97,7 @@ export const Search_Box = makeStyles({
   txtField: { backgroundColor: "#fff", width: "80%" },
 });
 
-export const Card_List = makeStyles({
+export const cardListStyle = makeStyles({
   heading: { textAlign: "center", color: "black", marginTop: 30 },
   body: { marginTop: 60, marginBottom: 60 },
 });

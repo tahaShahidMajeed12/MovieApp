@@ -1,3 +1,4 @@
+import { takeEvery, all, call, put, debounce } from "@redux-saga/core/effects";
 import {
   getMoviesListRequest,
   getTrendingMoviesListRequest,
@@ -15,7 +16,6 @@ import {
   setPeopleAction,
   setSearch,
 } from "../actions/movieAction";
-import { takeEvery, all, call, put, debounce } from "@redux-saga/core/effects";
 import {
   GET_MOVIES,
   GET_TRENDING_MOVIES,

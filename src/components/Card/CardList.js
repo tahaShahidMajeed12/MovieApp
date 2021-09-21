@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import CardItem from "./CardItem";
+import { cardListStyle } from "../../styles/styleSheet";
 
-import { Card_List } from "../../styles/styleSheet";
-const CardList = (props) => {
-  const state = props.movieState;
+const CardList = ({ movieState, dispatchGetMovieListAction }) => {
+  const state = movieState;
   useEffect(() => {
-    props.dispatchGetMovieListAction();
-  }, [props]);
+    dispatchGetMovieListAction();
+  }, []);
 
-  const classes = Card_List();
+  const classes = cardListStyle();
 
   return (
     <>
@@ -20,8 +20,8 @@ const CardList = (props) => {
         {state.selectedOption === "movie" &&
         state.isSearch === false &&
         state.moviesList
-          ? state.moviesList.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.moviesList.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.original_title}
@@ -34,8 +34,8 @@ const CardList = (props) => {
         {state.selectedOption === "trending" &&
         state.isSearch === false &&
         state.trendingMovies
-          ? state.trendingMovies.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.trendingMovies.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.original_title}
@@ -48,8 +48,8 @@ const CardList = (props) => {
         {state.selectedOption === "upcoming" &&
         state.isSearch === false &&
         state.upcomingMovies
-          ? state.upcomingMovies.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.upcomingMovies.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.original_title}
@@ -62,8 +62,8 @@ const CardList = (props) => {
         {state.selectedOption === "Tv Shows" &&
         state.isSearch === false &&
         state.tvShows
-          ? state.tvShows.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.tvShows.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.name}
@@ -76,8 +76,8 @@ const CardList = (props) => {
         {state.selectedOption === "people" &&
         state.isSearch === false &&
         state.people
-          ? state.people.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.people.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.name}
@@ -88,8 +88,8 @@ const CardList = (props) => {
             ))
           : null}
         {state.isSearch === true && state.search
-          ? state.search.map((data, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+          ? state.search.map((data) => (
+              <Grid item xs={12} sm={6} md={4} key={data.id}>
                 <CardItem
                   id={data.id}
                   name={data.name}

@@ -15,3 +15,4 @@ export const GET_SEARCH = "Get_Search";
 export const SET_SEARCH = "Set_Search";
 export const SET_SEARCH_STOP = "Stop_Search";
 export const IMAGE_PATH = "http://image.tmdb.org/t/p/w500";
+export const IMAGE_ALT = "Contemplative Reptile";

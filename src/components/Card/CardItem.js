@@ -3,26 +3,25 @@ import Card from "@material-ui/core/Card";
 import { CardMedia } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { IMAGE_PATH } from "../../store/constants";
-import { Card_Item } from "../../styles/styleSheet";
+import { IMAGE_PATH, IMAGE_ALT } from "../../store/constants";
+import { cardItemStyle } from "../../styles/styleSheet";
 
-export default function CardItem(props) {
-  const classes = Card_Item;
+export default function CardItem({ name, overview, path }) {
+  const classes = cardItemStyle;
   return (
     <Card className={classes.root} variant="outlined">
       <CardMedia
         component="img"
-        alt="Contemplative Reptile"
+        alt={IMAGE_ALT}
         height={300}
-        image={IMAGE_PATH + props.path}
-        title="Contemplative Reptile"
+        image={IMAGE_PATH + path}
       />
       <CardContent>
         <Typography variant="h6" style={classes.CardName}>
-          {props.name}
+          {name}
         </Typography>
         <Typography variant="body1" style={classes.body}>
-          {props.overview}
+          {overview}
         </Typography>
       </CardContent>
     </Card>

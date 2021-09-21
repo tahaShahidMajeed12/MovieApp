@@ -1,15 +1,19 @@
 import React from "react";
 import { Grid, Container, TextField, Button } from "@material-ui/core";
-import { Search_Box } from "../../styles/styleSheet";
+import { searchBoxStyle } from "../../styles/styleSheet";
 
-const SearchBox = (props) => {
-  const styles = Search_Box();
+const SearchBox = ({
+  dispatchGetSearch,
+  dispatchStopSearch,
+  dispatchGetMovieListAction,
+}) => {
+  const styles = searchBoxStyle();
   const handleChange = (v) => {
     if (v !== "") {
-      props.dispatchGetSearch(v);
+      dispatchGetSearch(v);
     } else {
-      props.dispatchStopSearch();
-      props.dispatchGetMovieListAction();
+      dispatchStopSearch();
+      dispatchGetMovieListAction();
     }
   };
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getMoviesListRequest = () => {
   return axios.request(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=2`
+    `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=2`
   );
 };
 export const getTrendingMoviesListRequest = () => {
