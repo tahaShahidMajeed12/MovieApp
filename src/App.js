@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./shared/Footer";
-import SearchBox from "./components/SearchBoxComponent";
-import Card from "./shared/Card";
+import SearchBox from "./components/SearchBox";
+import Card from "./components/Card";
 import NavBar from "./components/Header";
 export default function App() {
   return (

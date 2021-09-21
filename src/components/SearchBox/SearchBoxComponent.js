@@ -1,23 +1,15 @@
 import React from "react";
 import { Grid, Container, TextField, Button } from "@material-ui/core";
-import {
-  getSearch,
-  stopSearch,
-  getMovieListAction,
-} from "../store/actions/movieAction";
-import { useDispatch } from "react-redux";
-import { Search_Box } from "../styles/styleSheet";
+import { Search_Box } from "../../styles/styleSheet";
 
-const SearchBox = () => {
-  const dispatch = useDispatch();
-
+const SearchBox = (props) => {
   const styles = Search_Box();
   const handleChange = (v) => {
     if (v !== "") {
-      dispatch(getSearch(v));
+      props.dispatchGetSearch(v);
     } else {
-      dispatch(stopSearch());
-      dispatch(getMovieListAction());
+      props.dispatchStopSearch();
+      props.dispatchGetMovieListAction();
     }
   };
 
