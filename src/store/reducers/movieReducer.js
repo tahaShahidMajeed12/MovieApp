@@ -7,6 +7,9 @@ import {
   SET_PEOPLE,
   SET_SEARCH,
   SET_SEARCH_STOP,
+  SET_DETAIL_MOVIE,
+  SET_DETAIL_PEOPLE,
+  SET_DETAIL_TV,
 } from "../constants";
 import { fromJS, List } from "immutable";
 const initialState = fromJS({
@@ -14,6 +17,8 @@ const initialState = fromJS({
   trendingMovies: List([]),
   upcomingMovies: List([]),
   movieDetail: List([]),
+  tvDetail: List([]),
+  peopleDetail: List([]),
   tvShows: List([]),
   people: List([]),
   selectedOption: "movie",
@@ -41,11 +46,17 @@ const movieReducer = (state = initialState, action) => {
       }
       if (action.data.length >= 1) {
         console.log(state.get("search"));
-        return state.set("search", List([...action.data]));
+        return state.set("search", List(action.data));
       }
       return state;
     case SET_SEARCH_STOP:
       return state.set("isSearch", false);
+    case SET_DETAIL_TV:
+      return state.set("tvDetail", List(action.data));
+    case SET_DETAIL_MOVIE:
+      return state.set("movieDetail", List(action.data));
+    case SET_DETAIL_PEOPLE:
+      return state.set("peopleDetail", List(action.data));
     default:
       return state;
   }

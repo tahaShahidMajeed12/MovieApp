@@ -13,6 +13,12 @@ import {
   GET_SEARCH,
   SET_SEARCH,
   SET_SEARCH_STOP,
+  GET_DETAIL_MOVIE,
+  GET_DETAIL_PEOPLE,
+  GET_DETAIL_TV,
+  SET_DETAIL_TV,
+  SET_DETAIL_MOVIE,
+  SET_DETAIL_PEOPLE,
 } from "../constants";
 
 export const getMovieListAction = () => {
@@ -101,5 +107,39 @@ export const setSearch = (data) => {
 export const stopSearch = () => {
   return {
     type: SET_SEARCH_STOP,
+  };
+};
+
+export const getTvDetailAction = (data) => {
+  return {
+    type: GET_DETAIL_TV,
+    data: data,
+  };
+};
+export const setTvDetailAction = () => {
+  return {
+    type: SET_DETAIL_TV,
+  };
+};
+export const getMovieDetailAction = (data) => {
+  return {
+    type: GET_DETAIL_MOVIE,
+    data: data,
+  };
+};
+export const setMovieDetailAction = () => {
+  return {
+    type: SET_DETAIL_MOVIE,
+  };
+};
+export const getPeopleDetailAction = (data) => {
+  return {
+    type: GET_DETAIL_PEOPLE,
+    data: data,
+  };
+};
+export const setPeopleDetailAction = () => {
+  return {
+    type: SET_DETAIL_PEOPLE,
   };
 };

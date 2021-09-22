@@ -6,6 +6,9 @@ import {
   getTvShows,
   getPeopleRequest,
   search,
+  movieDetailRequest,
+  tvShowDetailRequest,
+  peopleDetailRequest,
 } from "../requests";
 import {
   setMovieListAction,
@@ -15,6 +18,9 @@ import {
   setTvShowsAction,
   setPeopleAction,
   setSearch,
+  setPeopleDetailAction,
+  setMovieDetailAction,
+  setTvDetailAction,
 } from "../actions/movieAction";
 import {
   GET_MOVIES,
@@ -23,6 +29,9 @@ import {
   GET_TV_SHOW,
   GET_PEOPLE,
   GET_SEARCH,
+  GET_DETAIL_PEOPLE,
+  GET_DETAIL_TV,
+  GET_DETAIL_MOVIE,
 } from "../constants";
 
 function* movieListSaga() {
@@ -65,6 +74,22 @@ function* multiSearchSaga(props) {
   yield put(setSearch(data.results));
   yield put(selection("Search Results"));
 }
+function* peopleDetailSaga(props) {
+  const apiCall = yield call(() => peopleDetailRequest(props.data));
+  const { data } = apiCall;
+  yield put(setPeopleDetailAction(data.results));
+}
+
+function* tvDetailSaga(props) {
+  const apiCall = yield call(() => tvShowDetailRequest(props.data));
+  const { data } = apiCall;
+  yield put(setTvDetailAction(data.results));
+}
+function* movieDetailSaga(props) {
+  const apiCall = yield call(() => movieDetailRequest(props.data));
+  const { data } = apiCall;
+  yield put(setMovieDetailAction(data.results));
+}
 
 function* RootSaga() {
   yield all([
@@ -74,6 +99,9 @@ function* RootSaga() {
     takeEvery(GET_TV_SHOW, tvShowListSaga),
     takeEvery(GET_PEOPLE, peopleListSaga),
     debounce(200, GET_SEARCH, multiSearchSaga),
+    takeEvery(GET_DETAIL_PEOPLE, peopleDetailSaga),
+    takeEvery(GET_DETAIL_TV, tvDetailSaga),
+    takeEvery(GET_DETAIL_MOVIE, movieDetailSaga),
   ]);
 }
 
