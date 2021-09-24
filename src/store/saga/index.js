@@ -77,18 +77,18 @@ function* multiSearchSaga(props) {
 function* peopleDetailSaga(props) {
   const apiCall = yield call(() => peopleDetailRequest(props.data));
   const { data } = apiCall;
-  yield put(setPeopleDetailAction(data.results));
+  yield put(setPeopleDetailAction([data]));
 }
 
 function* tvDetailSaga(props) {
   const apiCall = yield call(() => tvShowDetailRequest(props.data));
   const { data } = apiCall;
-  yield put(setTvDetailAction(data.results));
+  yield put(setTvDetailAction([data]));
 }
 function* movieDetailSaga(props) {
   const apiCall = yield call(() => movieDetailRequest(props.data));
   const { data } = apiCall;
-  yield put(setMovieDetailAction(data.results));
+  yield put(setMovieDetailAction([data]));
 }
 
 function* RootSaga() {

@@ -6,12 +6,10 @@ import {
 } from "../../store/actions/movieAction";
 import SearchBox from "./SearchBoxComponent";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchGetSearch: (e) => dispatch(getSearch(e)),
-    dispatchStopSearch: () => dispatch(stopSearch()),
-    dispatchGetMovieListAction: () => dispatch(getMovieListAction()),
-  };
+const mapDispatchToProps = {
+  dispatchGetSearch: (e) => getSearch(e),
+  dispatchStopSearch: () => stopSearch(),
+  dispatchGetMovieListAction: () => getMovieListAction(),
 };
 
 export default connect(null, mapDispatchToProps)(SearchBox);

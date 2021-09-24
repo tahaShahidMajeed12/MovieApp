@@ -116,9 +116,10 @@ export const getTvDetailAction = (data) => {
     data: data,
   };
 };
-export const setTvDetailAction = () => {
+export const setTvDetailAction = (data) => {
   return {
     type: SET_DETAIL_TV,
+    data: data,
   };
 };
 export const getMovieDetailAction = (data) => {
@@ -127,9 +128,10 @@ export const getMovieDetailAction = (data) => {
     data: data,
   };
 };
-export const setMovieDetailAction = () => {
+export const setMovieDetailAction = (data) => {
   return {
     type: SET_DETAIL_MOVIE,
+    data: data,
   };
 };
 export const getPeopleDetailAction = (data) => {
@@ -138,8 +140,9 @@ export const getPeopleDetailAction = (data) => {
     data: data,
   };
 };
-export const setPeopleDetailAction = () => {
+export const setPeopleDetailAction = (data) => {
   return {
     type: SET_DETAIL_PEOPLE,
+    data: data,
   };
 };

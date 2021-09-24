@@ -15,17 +15,15 @@ const Footer = () => {
         width="100%"
       >
         <Grid item lg={2} xs={12} sm={12} xl={2}>
-          <center>
-            <img
-              src={footerlogo}
-              className={classes.FooterImage}
-              alt="meow"
-              width={100}
-              height={140}
-            />
-            <br />
-            <Button className={classes.btn}>Join Community</Button>
-          </center>
+          <img
+            src={footerlogo}
+            className={classes.FooterImage}
+            alt="meow"
+            width={100}
+            height={140}
+          />
+          <br />
+          <Button className={classes.btn}>Join Community</Button>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
           <List dense={true}>

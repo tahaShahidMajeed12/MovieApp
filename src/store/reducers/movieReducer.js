@@ -1,3 +1,4 @@
+import { fromJS, List } from "immutable";
 import {
   SET_MOVIES,
   SET_TRENDING_MOVIES,
@@ -11,7 +12,6 @@ import {
   SET_DETAIL_PEOPLE,
   SET_DETAIL_TV,
 } from "../constants";
-import { fromJS, List } from "immutable";
 const initialState = fromJS({
   moviesList: List([]),
   trendingMovies: List([]),
@@ -45,7 +45,6 @@ const movieReducer = (state = initialState, action) => {
         state = state.set("isSearch", true);
       }
       if (action.data.length >= 1) {
-        console.log(state.get("search"));
         return state.set("search", List(action.data));
       }
       return state;

@@ -7,13 +7,11 @@ import {
 import NavBar from "./Header";
 import { connect } from "react-redux";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchUpcomingMovie: () => dispatch(getUpcomingMoviesAction()),
-    dispatchTrendingMovie: () => dispatch(getTrendingMoviesAction()),
-    dispatchTvShow: () => dispatch(getTvShowsAction()),
-    dispatchPeople: () => dispatch(getPeopleAction()),
-  };
+const mapDispatchToProps = {
+  dispatchUpcomingMovie: () => getUpcomingMoviesAction(),
+  dispatchTrendingMovie: () => getTrendingMoviesAction(),
+  dispatchTvShow: () => getTvShowsAction(),
+  dispatchPeople: () => getPeopleAction(),
 };
 
 export default connect(null, mapDispatchToProps)(NavBar);

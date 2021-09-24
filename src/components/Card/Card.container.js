@@ -7,10 +7,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchGetMovieListAction: () => dispatch(getMovieListAction()),
-  };
+const mapDispatchToProps = {
+  dispatchGetMovieListAction: () => getMovieListAction(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardList);
