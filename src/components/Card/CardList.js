@@ -28,12 +28,7 @@ const CardList = ({ movieState, dispatchGetMovieListAction, history }) => {
                 sm={6}
                 md={4}
                 key={data.id}
-                onClick={() =>
-                  history.push({
-                    pathname: "/detail",
-                    state: { type: "movie", id: data.id },
-                  })
-                }
+                onClick={() => history.push("/detail/movie/" + data.id)}
               >
                 <CardItem
                   id={data.id}
@@ -54,12 +49,7 @@ const CardList = ({ movieState, dispatchGetMovieListAction, history }) => {
                 sm={6}
                 md={4}
                 key={data.id}
-                onClick={() =>
-                  history.push({
-                    pathname: "/detail",
-                    state: { type: "movie", id: data.id },
-                  })
-                }
+                onClick={() => history.push("/detail/movie/" + data.id)}
               >
                 <CardItem
                   id={data.id}
@@ -80,12 +70,7 @@ const CardList = ({ movieState, dispatchGetMovieListAction, history }) => {
                 sm={6}
                 md={4}
                 key={data.id}
-                onClick={() =>
-                  history.push({
-                    pathname: "/detail",
-                    state: { type: "movie", id: data.id },
-                  })
-                }
+                onClick={() => history.push("/detail/movie/" + data.id)}
               >
                 <CardItem
                   id={data.id}
@@ -106,12 +91,7 @@ const CardList = ({ movieState, dispatchGetMovieListAction, history }) => {
                 sm={6}
                 md={4}
                 key={data.id}
-                onClick={() =>
-                  history.push({
-                    pathname: "/detail",
-                    state: { type: "tvShow", id: data.id },
-                  })
-                }
+                onClick={() => history.push("/detail/tvShow/" + data.id)}
               >
                 <CardItem
                   id={data.id}
@@ -132,12 +112,7 @@ const CardList = ({ movieState, dispatchGetMovieListAction, history }) => {
                 sm={6}
                 md={4}
                 key={data.id}
-                onClick={() =>
-                  history.push({
-                    pathname: "/detail",
-                    state: { type: "people", id: data.id },
-                  })
-                }
+                onClick={() => history.push("/detail/people/" + data.id)}
               >
                 <CardItem
                   id={data.id}

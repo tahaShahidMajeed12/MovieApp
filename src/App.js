@@ -21,9 +21,7 @@ export default function App() {
             </>
           )}
         ></Route>
-        <Route exact path="/detail">
-          <Detail />
-        </Route>
+        <Route exact path="/detail/:type/:id" component={Detail} />
       </Switch>
     </Router>
   );

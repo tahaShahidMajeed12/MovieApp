@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
-    detailState: () => state.Movie.toJS(),
+    detailState: state.Movie.toJS(),
   };
 };
 

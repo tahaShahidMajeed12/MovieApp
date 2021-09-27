@@ -1,77 +1,97 @@
-import { Grid } from "@material-ui/core";
-import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { IMAGE_ALT } from "../../store/constants";
+import { Grid, Typography } from "@material-ui/core";
+import React, { useEffect } from "react";
+import { IMAGE_ALT, IMAGE_PATH } from "../../store/constants";
 
 const Detail = ({
   detailState,
   dispatchMovieDetail,
   dispatchTvDetail,
   dispatchPeopleDetail,
+  match,
 }) => {
-  const location = useLocation();
-
-  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (match.params.type === "movie") {
+      dispatchMovieDetail(match.params.id);
+    } else if (match.params.type === "tvShow") {
+      dispatchTvDetail(match.params.id);
+    } else if (match.params.type === "people") {
+      dispatchPeopleDetail(match.params.id);
+    }
+  }, [dispatchMovieDetail, dispatchTvDetail, dispatchPeopleDetail, match]);
 
   return (
     <>
-      {location.state.type === "movie" ? (
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          alignContent="center"
-        >
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            <img
-              alt={IMAGE_ALT}
-              src={
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-              }
-              width="90%"
-              height="90%"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            jdjjdkj
-          </Grid>
-        </Grid>
-      ) : null}
-      {location.state.type === "tvShow" ? (
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          alignContent="center"
-        >
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            <img
-              alt="itsy bitsy"
-              src={
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            jdjjdkj
-          </Grid>
-        </Grid>
-      ) : null}
-      {location.state.type === "people" ? (
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          alignContent="center"
-        >
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            jdjjdkj
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={6}>
-            jdjjdkj
-          </Grid>
-        </Grid>
-      ) : null}
+      {match.params.type === "movie"
+        ? detailState.movieDetail.map((detailData) => (
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+              key={detailState.id}
+            >
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <img
+                  alt={IMAGE_ALT}
+                  src={IMAGE_PATH + detailData.backdrop_path}
+                  width="90%"
+                  height="90%"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <Typography variant="h2"> {detailData.title}</Typography>
+
+                <Typography variant="body1"> {detailData.overview}</Typography>
+              </Grid>
+            </Grid>
+          ))
+        : null}
+      {match.params.type === "tvShow"
+        ? detailState.tvDetail.map((detailData) => (
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+              key={detailState.id}
+            >
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <img
+                  alt={IMAGE_ALT}
+                  src={IMAGE_PATH + detailData.backdrop_path}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <Typography variant="h2"> {detailData.name}</Typography>
+
+                <Typography variant="body1"> {detailData.overview}</Typography>
+              </Grid>
+            </Grid>
+          ))
+        : null}
+      {match.params.type === "people"
+        ? detailState.peopleDetail.map((detailData) => (
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+              key={detailState.id}
+            >
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <img
+                  alt={IMAGE_ALT}
+                  src={IMAGE_PATH + detailData.profile_path}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} lg={6}>
+                <Typography variant="h2"> {detailData.name}</Typography>
+
+                <Typography variant="body1"> {detailData.biography}</Typography>
+              </Grid>
+            </Grid>
+          ))
+        : null}
     </>
   );
 };

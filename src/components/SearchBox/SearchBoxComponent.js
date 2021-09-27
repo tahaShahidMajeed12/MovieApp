@@ -8,9 +8,9 @@ const SearchBox = ({
   dispatchGetMovieListAction,
 }) => {
   const styles = searchBoxStyle();
-  const handleChange = (v) => {
-    if (v !== "") {
-      dispatchGetSearch(v);
+  const handleChange = (searchText) => {
+    if (searchText !== "") {
+      dispatchGetSearch(searchText);
     } else {
       dispatchStopSearch();
       dispatchGetMovieListAction();
