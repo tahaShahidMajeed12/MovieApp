@@ -1,15 +1,28 @@
-import React, { useEffect } from "react";
-import Footer from "./Components/Footer";
-import SearchBox from "./Components/SearchBoxComponent";
-import NavBar from "./Components/AppBar";
-import CardList from "./Components/CardList";
+import React from "react";
+import Footer from "./shared/Footer";
+import SearchBox from "./components/SearchBox";
+import Card from "./components/Card";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Detail from "./components/Detail";
+import NavBar from "./components/Header";
 export default function App() {
   return (
-    <>
-      <NavBar />
-      <SearchBox />
-      <CardList />
-      <Footer />
-    </>
+    <Router>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <>
+              <NavBar {...props} />
+              <SearchBox {...props} />
+              <Card {...props} />
+              <Footer {...props} />
+            </>
+          )}
+        ></Route>
+        <Route exact path="/detail/:type/:id" component={Detail} />
+      </Switch>
+    </Router>
   );
 }

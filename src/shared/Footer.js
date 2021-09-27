@@ -13,31 +13,20 @@ const Footer = () => {
         alignItems="center"
         spacing={2}
         width="100%"
-        style={{ margin: 20 }}
       >
         <Grid item lg={2} xs={12} sm={12} xl={2}>
-          <center>
-            <img
-              src={footerlogo}
-              className={classes.FooterImage}
-              alt="meow"
-              width={100}
-              height={140}
-            />
-            <br />
-            <Button
-              style={{
-                color: "darkblue",
-                borderColor: "#fff",
-                backgroundColor: "#fff",
-              }}
-            >
-              Join Community
-            </Button>
-          </center>
+          <img
+            src={footerlogo}
+            className={classes.FooterImage}
+            alt="meow"
+            width={100}
+            height={140}
+          />
+          <br />
+          <Button className={classes.btn}>Join Community</Button>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -49,7 +38,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -61,7 +50,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
@@ -73,7 +62,7 @@ const Footer = () => {
           </List>
         </Grid>
         <Grid item lg={2} xs={6} sm={3} xl={2}>
-          <List dense={"dense"}>
+          <List dense={true}>
             <ListItemText>
               <h3>About TMDB</h3>
             </ListItemText>
